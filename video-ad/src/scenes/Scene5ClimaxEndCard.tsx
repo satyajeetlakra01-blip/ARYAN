@@ -210,13 +210,13 @@ export const Scene5ClimaxEndCard: React.FC = () => {
                 }}
               >
                 <Img
-                  src={staticFile("images/aryan-portrait-standing.webp")}
+                  src={staticFile("images/aryan-bike-portrait.webp")}
                   style={{
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    objectPosition: "50% 18%",
-                    transform: "scale(1.2)",
+                    objectPosition: "50% 22%",
+                    transform: "scale(1.25)",
                   }}
                 />
               </div>

@@ -123,11 +123,11 @@ export default function Contact() {
               <div className="flex items-center gap-3.5 mb-6">
                 <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-solar-500/40 bg-canvas-900 shrink-0 shadow-lg shadow-solar-500/10">
                   <Image
-                    src="/images/optimized/aryan-hero.webp"
+                    src="/images/aryan-bike-portrait.webp"
                     alt="Aryan Tanty avatar"
                     fill
                     sizes="56px"
-                    className="object-cover object-center"
+                    className="object-cover object-top"
                   />
                 </div>
                 <div>

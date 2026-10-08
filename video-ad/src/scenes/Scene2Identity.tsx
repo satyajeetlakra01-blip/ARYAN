@@ -37,10 +37,10 @@ export const Scene2Identity: React.FC = () => {
 
   // Current photo for this cut
   const currentPhoto = isCut1
-    ? "images/aryan-portrait-standing.webp"
+    ? "images/aryan-bike-portrait.webp"
     : isCut2
-    ? "images/aryan-stream-log-poised.webp"
-    : "images/aryan-candid-laugh.webp";
+    ? "images/aryan-bike-helmet.webp"
+    : "images/aryan-bike-portrait.webp";
 
   // Ken Burns zoom per cut
   const cutFrame = isCut1 ? frame : isCut2 ? frame - 85 : frame - 190;

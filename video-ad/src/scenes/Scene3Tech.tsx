@@ -60,10 +60,10 @@ export const Scene3Tech: React.FC = () => {
 
   // Active photo per cut
   const photoSrc = isCut1
-    ? "images/aryan-sitting-rock-focused.webp"
+    ? "images/aryan-bike-portrait.webp"
     : isCut2
-    ? "images/aryan-candid-laugh.webp"
-    : "images/aryan-stream-log-sitting.webp";
+    ? "images/aryan-bike-helmet.webp"
+    : "images/aryan-bike-portrait.webp";
 
   return (
     <AbsoluteFill

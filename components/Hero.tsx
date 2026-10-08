@@ -202,23 +202,23 @@ export default function Hero() {
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     <span className="text-[10px] font-mono uppercase tracking-wider text-graphite-300 light:text-slate-700 font-bold">
-                      NATURAL FOREST EXCURSION
+                      AUTHENTIC CREATOR
                     </span>
                   </div>
                   <span className="text-[10px] font-mono text-solar-400 font-semibold">
-                    RAW SENSOR &middot; 3072&times;4096
+                    ROYAL ENFIELD &middot; S24 ULTRA
                   </span>
                 </div>
 
                 {/* Viewport: Pristine Authentic Photo of Aryan */}
                 <div className="relative aspect-[3/4] w-full rounded-[1.8rem] overflow-hidden bg-canvas-950">
                   <Image
-                    src="/images/optimized/aryan-hero.webp"
-                    alt="Aryan Tanty standing poised by the forest river stream with an authentic smile"
+                    src="/images/aryan-bike-portrait.webp"
+                    alt="Aryan Tanty on his Royal Enfield motorcycle with an authentic smile"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 450px"
-                    className="object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 ease-out hover:scale-105"
                   />
 
                   {/* Editorial Gradient & Natural Vignette */}

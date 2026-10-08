@@ -60,18 +60,18 @@ export default function About() {
               {/* Primary Focused Portrait */}
               <div className="relative aspect-[3/4] w-full rounded-3xl overflow-hidden border border-white/20 light:border-slate-300 bg-canvas-900 shadow-2xl group">
                 <Image
-                  src="/images/optimized/aryan-sitting-rock-focused.webp"
-                  alt="Aryan Tanty seated thoughtfully on a forest boulder with direct focused gaze"
+                  src="/images/aryan-bike-portrait.webp"
+                  alt="Aryan Tanty seated on Royal Enfield motorcycle with authentic confident smile"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                 {/* Floating Top Badge */}
                 <div className="absolute top-4 left-4 px-3 py-1.5 rounded-xl glass-panel border border-white/15 text-[10px] font-mono text-white flex items-center gap-1.5 backdrop-blur-md">
                   <span className="w-2 h-2 rounded-full bg-solar-500 animate-pulse" />
-                  <span>DIRECT GAZE // AUTHENTIC</span>
+                  <span>DIRECT FOCUS // AUTHENTIC</span>
                 </div>
 
                 {/* Bottom Card Overlay */}
@@ -79,10 +79,10 @@ export default function About() {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs font-bold text-white">
-                        Thoughtful Gaze &middot; Forest Trail
+                        Royal Enfield Classic &middot; Outdoor
                       </div>
                       <div className="text-[10px] font-mono text-solar-400 mt-0.5">
-                        Excursion Capture &middot; 3072&times;4096 Sensor
+                        High Dynamic Sensor &middot; Galaxy S24 Ultra
                       </div>
                     </div>
                     <Flame className="w-4 h-4 text-solar-400" />
@@ -93,15 +93,15 @@ export default function About() {
               {/* Secondary Overlapping Snapshot */}
               <div className="hidden sm:block absolute -bottom-8 -right-6 w-44 aspect-[3/4] rounded-2xl overflow-hidden border-2 border-solar-500/50 shadow-2xl bg-canvas-900 group">
                 <Image
-                  src="/images/optimized/aryan-portrait-standing.webp"
-                  alt="Aryan standing in uniform beside trees"
+                  src="/images/aryan-bike-helmet.webp"
+                  alt="Aryan on motorcycle with helmet and visor"
                   fill
                   sizes="180px"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-black/80 text-[9px] font-mono text-solar-400">
-                  ICSE X LIFE
+                  RIDER // 9156
                 </div>
               </div>
             </div>

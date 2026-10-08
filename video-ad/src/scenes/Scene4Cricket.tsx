@@ -58,10 +58,10 @@ export const Scene4Cricket: React.FC = () => {
 
   // Active photo per cut
   const currentPhoto = isCut1
-    ? "images/aryan-waterfall-portrait.webp"
+    ? "images/aryan-bike-portrait.webp"
     : isCut2
-    ? "images/aryan-waterfall-overlook.webp"
-    : "images/aryan-waterfall-gorge-wide.webp";
+    ? "images/aryan-bike-helmet.webp"
+    : "images/aryan-bike-portrait.webp";
 
   return (
     <AbsoluteFill

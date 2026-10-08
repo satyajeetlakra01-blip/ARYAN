@@ -85,8 +85,8 @@ export const Scene1Hook: React.FC = () => {
             <Img
               src={
                 frame >= 40 && frame < 60
-                  ? staticFile("images/aryan-portrait-standing.webp")
-                  : staticFile("images/aryan-hero.webp")
+                  ? staticFile("images/aryan-bike-helmet.webp")
+                  : staticFile("images/aryan-bike-portrait.webp")
               }
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
@@ -180,8 +180,8 @@ export const Scene1Hook: React.FC = () => {
             }}
           >
             <Img
-              src={staticFile("images/aryan-hero.webp")}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              src={staticFile("images/aryan-bike-portrait.webp")}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
             />
             <div
               style={{

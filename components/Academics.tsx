@@ -80,11 +80,11 @@ export default function Academics() {
                 {/* Real Photo Portrait */}
                 <div className="relative w-full h-full z-10">
                   <Image
-                    src="/images/optimized/aryan-portrait-standing.webp"
-                    alt="Aryan Tanty in ICSE school uniform standing by woodland trees"
+                    src="/images/aryan-bike-portrait.webp"
+                    alt="Aryan Tanty with disciplined focus"
                     fill
                     sizes="(max-width: 768px) 100vw, 350px"
-                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 hover:scale-105"
                   />
                 </div>
 

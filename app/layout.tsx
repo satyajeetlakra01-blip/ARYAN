@@ -50,14 +50,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aryantanty18-nu.vercel.app",
+    url: "https://aryantanty.vercel.app",
     siteName: "Aryan Tanty — Official Portfolio",
     title: "Aryan Tanty — Student, Digital Creator & Technology Enthusiast",
     description:
       "Curious by nature. Precise by choice. Explore Aryan Tanty's world of technology, creative experimentation, academics, and cricket.",
     images: [
       {
-        url: "/images/aryan-hero.webp",
+        url: "/images/aryan-bike-portrait.webp",
         width: 1200,
         height: 1600,
         alt: "Aryan Tanty — Student, Digital Creator & Technology Enthusiast",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     title: "Aryan Tanty — Student, Digital Creator & Technology Enthusiast",
     description:
       "Curious by nature. Precise by choice. Official digital portfolio of Aryan Tanty.",
-    images: ["/images/aryan-hero.webp"],
+    images: ["/images/aryan-bike-portrait.webp"],
   },
   robots: {
     index: true,
@@ -96,19 +96,19 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "ProfilePage",
-        "@id": "https://aryantanty18-nu.vercel.app/#webpage",
-        "url": "https://aryantanty18-nu.vercel.app",
+        "@id": "https://aryantanty.vercel.app/#webpage",
+        "url": "https://aryantanty.vercel.app",
         "name": "Aryan Tanty — Student, Digital Creator & Technology Enthusiast",
         "description":
           "Official personal portfolio of Aryan Tanty. Student, digital creator, and technology enthusiast.",
         "inLanguage": "en-US",
         "mainEntity": {
           "@type": "Person",
-          "@id": "https://aryantanty18-nu.vercel.app/#person",
+          "@id": "https://aryantanty.vercel.app/#person",
           "name": "Aryan Tanty",
           "alternateName": ["Aryan", "_aryan085"],
-          "url": "https://aryantanty18-nu.vercel.app",
-          "image": "https://aryantanty18-nu.vercel.app/images/aryan-hero.webp",
+          "url": "https://aryantanty.vercel.app",
+          "image": "https://aryantanty.vercel.app/images/aryan-bike-portrait.webp",
           "email": "mailto:vroaryan25@gmail.com",
           "jobTitle": "Student & Digital Creator",
           "nationality": "Indian",
@@ -133,12 +133,12 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://aryantanty18-nu.vercel.app/#website",
-        "url": "https://aryantanty18-nu.vercel.app",
+        "@id": "https://aryantanty.vercel.app/#website",
+        "url": "https://aryantanty.vercel.app",
         "name": "Aryan Tanty",
         "description": "Official personal brand and creator portfolio of Aryan Tanty.",
         "publisher": {
-          "@id": "https://aryantanty18-nu.vercel.app/#person"
+          "@id": "https://aryantanty.vercel.app/#person"
         }
       }
     ]
@@ -147,8 +147,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/aryan-hero.webp" />
-        <link rel="canonical" href="https://aryantanty18-nu.vercel.app" />
+        <link rel="icon" href="/images/aryan-bike-portrait.webp" />
+        <link rel="canonical" href="https://aryantanty.vercel.app" />
         <meta name="google-site-verification" content="google3e03f8662a84158e" />
         <script
           type="application/ld+json"
