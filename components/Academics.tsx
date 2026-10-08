@@ -80,7 +80,7 @@ export default function Academics() {
                 {/* Real Photo Portrait */}
                 <div className="relative w-full h-full z-10">
                   <Image
-                    src="/images/optimized/aryan-portrait-standing.jpg"
+                    src="/images/optimized/aryan-portrait-standing.webp"
                     alt="Aryan Tanty in ICSE school uniform standing by woodland trees"
                     fill
                     sizes="(max-width: 768px) 100vw, 350px"

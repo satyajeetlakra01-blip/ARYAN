@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       "Curious by nature. Precise by choice. Explore Aryan Tanty's world of technology, creative experimentation, academics, and cricket.",
     images: [
       {
-        url: "/images/aryan-hero.jpg",
+        url: "/images/aryan-hero.webp",
         width: 1200,
         height: 1600,
         alt: "Aryan Tanty — Student, Digital Creator & Technology Enthusiast",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     title: "Aryan Tanty — Student, Digital Creator & Technology Enthusiast",
     description:
       "Curious by nature. Precise by choice. Official digital portfolio of Aryan Tanty.",
-    images: ["/images/aryan-hero.jpg"],
+    images: ["/images/aryan-hero.webp"],
   },
   robots: {
     index: true,
@@ -108,7 +108,7 @@ export default function RootLayout({
           "name": "Aryan Tanty",
           "alternateName": ["Aryan", "_aryan085"],
           "url": "https://aryantanty18-nu.vercel.app",
-          "image": "https://aryantanty18-nu.vercel.app/images/aryan-hero.jpg",
+          "image": "https://aryantanty18-nu.vercel.app/images/aryan-hero.webp",
           "email": "mailto:vroaryan25@gmail.com",
           "jobTitle": "Student & Digital Creator",
           "nationality": "Indian",
@@ -147,7 +147,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/aryan-hero.jpg" />
+        <link rel="icon" href="/images/aryan-hero.webp" />
         <link rel="canonical" href="https://aryantanty18-nu.vercel.app" />
         <meta name="google-site-verification" content="google3e03f8662a84158e" />
         <script

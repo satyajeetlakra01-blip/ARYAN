@@ -60,7 +60,7 @@ export default function About() {
               {/* Primary Focused Portrait */}
               <div className="relative aspect-[3/4] w-full rounded-3xl overflow-hidden border border-white/20 light:border-slate-300 bg-canvas-900 shadow-2xl group">
                 <Image
-                  src="/images/optimized/aryan-sitting-rock-focused.jpg"
+                  src="/images/optimized/aryan-sitting-rock-focused.webp"
                   alt="Aryan Tanty seated thoughtfully on a forest boulder with direct focused gaze"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"
@@ -93,7 +93,7 @@ export default function About() {
               {/* Secondary Overlapping Snapshot */}
               <div className="hidden sm:block absolute -bottom-8 -right-6 w-44 aspect-[3/4] rounded-2xl overflow-hidden border-2 border-solar-500/50 shadow-2xl bg-canvas-900 group">
                 <Image
-                  src="/images/optimized/aryan-portrait-standing.jpg"
+                  src="/images/optimized/aryan-portrait-standing.webp"
                   alt="Aryan standing in uniform beside trees"
                   fill
                   sizes="180px"

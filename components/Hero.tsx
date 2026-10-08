@@ -213,7 +213,7 @@ export default function Hero() {
                 {/* Viewport: Pristine Authentic Photo of Aryan */}
                 <div className="relative aspect-[3/4] w-full rounded-[1.8rem] overflow-hidden bg-canvas-950">
                   <Image
-                    src="/images/optimized/aryan-hero.jpg"
+                    src="/images/optimized/aryan-hero.webp"
                     alt="Aryan Tanty standing poised by the forest river stream with an authentic smile"
                     fill
                     priority

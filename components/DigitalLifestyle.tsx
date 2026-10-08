@@ -60,7 +60,7 @@ export default function DigitalLifestyle() {
                 {/* Real Environmental Photo */}
                 <div className="relative w-full h-full z-10">
                   <Image
-                    src="/images/optimized/aryan-stream-log-poised.jpg"
+                    src="/images/optimized/aryan-stream-log-poised.webp"
                     alt="Aryan standing poised on a natural river log in the forest"
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
