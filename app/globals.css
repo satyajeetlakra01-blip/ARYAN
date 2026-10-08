@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #08090d;
+  --foreground: #f8fafc;
+  --card-bg: rgba(16, 18, 26, 0.78);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --accent-solar: #ff6b00;
+  --accent-crimson: #ff2a4d;
+  --accent-acid: #d4ff00;
+  --accent-cyan: #ff7a00;
+  --accent-blue: #ff2a4d;
+  --accent-glow: rgba(255, 107, 0, 0.22);
+  --muted-text: #94a3b8;
+  --subtle-rule: rgba(255, 255, 255, 0.07);
+}
+
+.light {
+  --background: #fbfbfc;
+  --foreground: #090d16;
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(15, 23, 42, 0.09);
+  --accent-solar: #e65100;
+  --accent-crimson: #d90429;
+  --accent-acid: #a6cc00;
+  --accent-cyan: #e65100;
+  --accent-blue: #d90429;
+  --accent-glow: rgba(230, 81, 0, 0.16);
+  --muted-text: #64748b;
+  --subtle-rule: rgba(15, 23, 42, 0.08);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  html.light {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: rgba(255, 107, 0, 0.35);
+    color: #ffffff;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 0, 0.6);
+}
+
+/* Subtle Grid Background Texture */
+.bg-subtle-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.light .bg-subtle-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+/* Glass Card */
+.glass-panel {
+  background-color: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 107, 0, 0.35);
+}
+
+.light .glass-panel:hover {
+  border-color: rgba(230, 81, 0, 0.4);
+}
+
+/* Motion Graphic Text Styles */
+.solar-gradient-text {
+  background: linear-gradient(135deg, #ff9933 0%, #ff6b00 45%, #ff2a4d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.crimson-gradient-text {
+  background: linear-gradient(135deg, #ff4d6d 0%, #ff2a4d 60%, #c8102e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.acid-gradient-text {
+  background: linear-gradient(135deg, #efff85 0%, #d4ff00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyan-gradient-text {
+  background: linear-gradient(135deg, #ff9933 0%, #ff6b00 50%, #ff2a4d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-outline-giant {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
+  color: transparent;
+}
+
+.text-outline-solar {
+  -webkit-text-stroke: 1.5px rgba(255, 107, 0, 0.45);
+  color: transparent;
+}
+
+.light .text-outline-giant {
+  -webkit-text-stroke: 1.5px rgba(15, 23, 42, 0.15);
+  color: transparent;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Fade-in animation (used by CelebrationOverlay, etc.) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Vertical range input for volume slider */
+input[type="range"][style*="vertical-lr"] {
+  -webkit-appearance: slider-vertical;
+  appearance: slider-vertical;
+  width: 4px;
+}
