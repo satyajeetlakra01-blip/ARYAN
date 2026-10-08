@@ -1,0 +1,30 @@
+# Aryan Tanty
+
+> Student, Digital Creator & Technology Enthusiast.
+> Curious by nature. Precise by choice.
+
+## Core Identity & Biography
+Aryan Tanty is a young, energetic, creative, ambitious, curious, practical, and detail-oriented student and digital creator based in India. He balances high-level digital experimentation with disciplined ICSE Class 10 academic rigor. Aryan approaches technology, software, smart hardware, spatial audio, and visual design with an analytical eye and an appetite for learning fundamental principles.
+
+## Verified Direct Channels
+- Official Portfolio: https://aryantanty18-nu.vercel.app
+- Instagram: https://www.instagram.com/_aryan085/?__pwa=1 (@_aryan085)
+- Direct Email: vroaryan25@gmail.com
+- GitHub Source: https://github.com/satyajeetlakra01-blip/ARYAN
+
+## Core Interests & Expertise
+- **Artificial Intelligence**: Practical AI tooling, prompt architecture, generative workflows, and agentic systems.
+- **Hardware & Wearables**: Smart devices, wearable tech, spatial audio acoustics, and mechanical precision.
+- **Visual Design & Motion**: Color science, 3D motion graphic aesthetics, clean typography, editorial minimalism.
+- **Academics**: ICSE Class 10 curriculum with emphasis on conceptual depth in Mathematics, Biology, English Literature, and Economics.
+- **Cricket Passion**: Devoted follower of Royal Challengers Bengaluru (RCB) and Virat Kohli (#18). Inspired by chase psychology, athletic conditioning, and mental resilience under pressure.
+
+## Personal Philosophy & Manifesto
+"Useful beats unnecessary." Aryan prefers solutions that save time, reduce clutter, serve a genuine purpose, work reliably, and look intentionally polished. In design and engineering, he rejects decorative noise and artificial gimmicks in favor of authentic execution.
+
+## Technical Stack & Creative Lab
+- Next.js 14 (App Router)
+- React 18 & TypeScript
+- Tailwind CSS & Framer Motion
+- Web Audio API Procedural Synthesis
+- High-resolution environmental photography across forest excursions and outdoor trails
