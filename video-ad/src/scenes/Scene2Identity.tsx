@@ -19,20 +19,37 @@ export const Scene2Identity: React.FC = () => {
   const enterSpring = spring({
     frame,
     fps,
-    config: { damping: 16, mass: 0.9, stiffness: 130 },
+    config: { damping: 14, mass: 0.8, stiffness: 150 },
   });
 
-  // Photo 1 & Photo 2 swap around frame 180 (halfway through the 360-frame scene)
-  const isSecondHalf = frame >= 180;
-  const subFrame = isSecondHalf ? frame - 180 : frame;
-  const cardSpring = spring({
-    frame: subFrame,
-    fps,
-    config: { damping: 15, mass: 0.8, stiffness: 140 },
-  });
+  // Fast cuts inside Scene 2:
+  // Cut 1: 0 - 85 frames (Standing portrait in uniform)
+  // Cut 2: 85 - 190 frames (Stream log poised)
+  // Cut 3: 190 - 300 frames (Candid laugh / metrics peak)
+  const isCut1 = frame < 85;
+  const isCut2 = frame >= 85 && frame < 190;
+  const isCut3 = frame >= 190;
 
-  // Slow subtle Ken Burns zoom
-  const zoom1 = 1 + frame * 0.0004;
+  // Flash on cut points (frame 85 and frame 190)
+  const isFlash =
+    (frame >= 83 && frame <= 88) || (frame >= 188 && frame <= 193);
+  const flashOpacity = isFlash ? 0.85 : 0;
+
+  // Current photo for this cut
+  const currentPhoto = isCut1
+    ? "images/aryan-portrait-standing.webp"
+    : isCut2
+    ? "images/aryan-stream-log-poised.webp"
+    : "images/aryan-candid-laugh.webp";
+
+  // Ken Burns zoom per cut
+  const cutFrame = isCut1 ? frame : isCut2 ? frame - 85 : frame - 190;
+  const zoom = 1 + cutFrame * 0.0008;
+
+  // Metric spring animations
+  const m1Spring = spring({ frame: frame - 120, fps, config: { damping: 12, stiffness: 180 } });
+  const m2Spring = spring({ frame: frame - 160, fps, config: { damping: 12, stiffness: 180 } });
+  const m3Spring = spring({ frame: frame - 200, fps, config: { damping: 12, stiffness: 180 } });
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#050608" }}>
@@ -52,7 +69,7 @@ export const Scene2Identity: React.FC = () => {
           padding: "0 120px",
         }}
       >
-        {/* Left Column: Authentic Portrait with Tech Frame */}
+        {/* Left Column: Authentic Portrait with Punch Cuts */}
         <div
           style={{
             position: "relative",
@@ -60,22 +77,18 @@ export const Scene2Identity: React.FC = () => {
             height: 600,
             borderRadius: 24,
             overflow: "hidden",
-            boxShadow: "0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255,107,0,0.25)",
-            border: "1.5px solid rgba(255,107,0,0.4)",
+            boxShadow: "0 25px 60px rgba(0,0,0,0.8), 0 0 50px rgba(255,107,0,0.35)",
+            border: "2px solid rgba(255,107,0,0.6)",
             transform: `scale(${enterSpring})`,
           }}
         >
           <Img
-            src={
-              isSecondHalf
-                ? staticFile("images/aryan-stream-log-poised.jpg")
-                : staticFile("images/aryan-portrait-standing.jpg")
-            }
+            src={staticFile(currentPhoto)}
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              transform: `scale(${zoom1})`,
+              transform: `scale(${zoom})`,
             }}
           />
 
@@ -85,7 +98,7 @@ export const Scene2Identity: React.FC = () => {
               position: "absolute",
               inset: 0,
               background:
-                "linear-gradient(to top, rgba(5,6,8,0.9) 0%, rgba(5,6,8,0.1) 50%, rgba(5,6,8,0.3) 100%)",
+                "linear-gradient(to top, rgba(5,6,8,0.92) 0%, rgba(5,6,8,0.1) 50%, rgba(5,6,8,0.3) 100%)",
             }}
           />
 
@@ -96,11 +109,11 @@ export const Scene2Identity: React.FC = () => {
               bottom: 24,
               left: 24,
               right: 24,
-              backgroundColor: "rgba(10, 12, 18, 0.85)",
+              backgroundColor: "rgba(10, 12, 18, 0.88)",
               backdropFilter: "blur(12px)",
               padding: "14px 18px",
               borderRadius: 14,
-              border: "1px solid rgba(255, 255, 255, 0.15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -125,7 +138,11 @@ export const Scene2Identity: React.FC = () => {
                   letterSpacing: "0.1em",
                 }}
               >
-                {isSecondHalf ? "EXPLORER // NATURE SPRINT" : "PURIST // ICSE SCHOLAR"}
+                {isCut1
+                  ? "PURIST // ICSE SCHOLAR"
+                  : isCut2
+                  ? "EXPLORER // NATURE LOG"
+                  : "CREATOR // ENERGETIC"}
               </div>
             </div>
 
@@ -149,7 +166,6 @@ export const Scene2Identity: React.FC = () => {
             display: "flex",
             flexDirection: "column",
             gap: 22,
-            transform: `scale(${cardSpring})`,
           }}
         >
           {/* Badge */}
@@ -158,8 +174,8 @@ export const Scene2Identity: React.FC = () => {
               alignSelf: "flex-start",
               padding: "6px 16px",
               borderRadius: 999,
-              backgroundColor: "rgba(255,107,0,0.15)",
-              border: "1px solid rgba(255,107,0,0.4)",
+              backgroundColor: "rgba(255,107,0,0.2)",
+              border: "1px solid rgba(255,107,0,0.5)",
               fontFamily: "'Courier New', monospace",
               fontSize: 13,
               letterSpacing: "0.2em",
@@ -197,7 +213,7 @@ export const Scene2Identity: React.FC = () => {
             style={{
               fontFamily: "system-ui, sans-serif",
               fontSize: 20,
-              color: "rgba(255,255,255,0.75)",
+              color: "rgba(255,255,255,0.8)",
               lineHeight: 1.5,
               margin: 0,
             }}
@@ -205,7 +221,7 @@ export const Scene2Identity: React.FC = () => {
             While others separate academics from code, Aryan blends mathematical discipline with cutting-edge visual motion design and AI engineering.
           </p>
 
-          {/* 3 Metric Cards */}
+          {/* 3 Metric Cards popping on beats */}
           <div
             style={{
               display: "grid",
@@ -217,10 +233,12 @@ export const Scene2Identity: React.FC = () => {
             {/* Metric 1 */}
             <div
               style={{
-                backgroundColor: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,107,0,0.3)",
                 borderRadius: 14,
                 padding: "16px 18px",
+                transform: `scale(${Math.max(0, m1Spring)})`,
+                boxShadow: "0 0 20px rgba(255,107,0,0.15)",
               }}
             >
               <div
@@ -237,7 +255,7 @@ export const Scene2Identity: React.FC = () => {
                 style={{
                   fontFamily: "system-ui, sans-serif",
                   fontSize: 12,
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.75)",
                   marginTop: 4,
                   fontWeight: 600,
                 }}
@@ -249,10 +267,12 @@ export const Scene2Identity: React.FC = () => {
             {/* Metric 2 */}
             <div
               style={{
-                backgroundColor: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(6,182,212,0.3)",
                 borderRadius: 14,
                 padding: "16px 18px",
+                transform: `scale(${Math.max(0, m2Spring)})`,
+                boxShadow: "0 0 20px rgba(6,182,212,0.15)",
               }}
             >
               <div
@@ -269,7 +289,7 @@ export const Scene2Identity: React.FC = () => {
                 style={{
                   fontFamily: "system-ui, sans-serif",
                   fontSize: 12,
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.75)",
                   marginTop: 4,
                   fontWeight: 600,
                 }}
@@ -281,10 +301,12 @@ export const Scene2Identity: React.FC = () => {
             {/* Metric 3 */}
             <div
               style={{
-                backgroundColor: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(34,197,94,0.3)",
                 borderRadius: 14,
                 padding: "16px 18px",
+                transform: `scale(${Math.max(0, m3Spring)})`,
+                boxShadow: "0 0 20px rgba(34,197,94,0.15)",
               }}
             >
               <div
@@ -301,7 +323,7 @@ export const Scene2Identity: React.FC = () => {
                 style={{
                   fontFamily: "system-ui, sans-serif",
                   fontSize: 12,
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(255,255,255,0.75)",
                   marginTop: 4,
                   fontWeight: 600,
                 }}
@@ -312,6 +334,17 @@ export const Scene2Identity: React.FC = () => {
           </div>
         </div>
       </AbsoluteFill>
+
+      {/* Screen flash on cut points */}
+      {flashOpacity > 0 && (
+        <AbsoluteFill
+          style={{
+            backgroundColor: "#ffffff",
+            opacity: flashOpacity,
+            pointerEvents: "none",
+          }}
+        />
+      )}
     </AbsoluteFill>
   );
 };

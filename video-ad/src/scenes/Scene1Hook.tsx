@@ -15,32 +15,37 @@ export const Scene1Hook: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 0 - 90 frames (0 - 3s): Riser buildup
-  // Frame 90 (3.0s): Hard Bass Drop / Impact!
+  // DROP FRAME: Frame 78 (2.6s Vine Boom)
+  const DROP_FRAME = 78;
 
-  // Shake effect around frame 90
-  const isDrop = frame >= 88 && frame <= 104;
-  const shakeX = isDrop ? (Math.sin(frame * 2.5) * (104 - frame) * 1.5) : 0;
-  const shakeY = isDrop ? (Math.cos(frame * 2.8) * (104 - frame) * 1.5) : 0;
+  // Screen shake on drop
+  const isDrop = frame >= DROP_FRAME && frame <= DROP_FRAME + 20;
+  const shakeIntensity = isDrop ? (DROP_FRAME + 20 - frame) * 1.8 : 0;
+  const shakeX = Math.sin(frame * 2.5) * shakeIntensity;
+  const shakeY = Math.cos(frame * 2.8) * shakeIntensity;
 
-  // Flash white/orange on drop
-  const flashOpacity = interpolate(frame, [89, 91, 102], [0, 0.95, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  // Camera flashes at frames 40, 60, and DROP_FRAME
+  const isFlash1 = frame >= 40 && frame <= 44;
+  const isFlash2 = frame >= 60 && frame <= 64;
+  const isDropFlash = frame >= DROP_FRAME && frame <= DROP_FRAME + 8;
+  const flashOpacity = isDropFlash
+    ? interpolate(frame, [DROP_FRAME, DROP_FRAME + 2, DROP_FRAME + 8], [0, 0.95, 0])
+    : isFlash1 || isFlash2
+    ? 0.75
+    : 0;
 
   // Pre-drop typography spring
   const preScale = spring({
     frame,
     fps,
-    config: { damping: 14, mass: 0.8, stiffness: 120 },
+    config: { damping: 12, mass: 0.8, stiffness: 140 },
   });
 
   // Post-drop elements spring
   const postSpring = spring({
-    frame: frame - 90,
+    frame: frame - DROP_FRAME,
     fps,
-    config: { damping: 15, mass: 1, stiffness: 140 },
+    config: { damping: 14, mass: 0.9, stiffness: 150 },
   });
 
   return (
@@ -53,8 +58,8 @@ export const Scene1Hook: React.FC = () => {
       <ParticlesBackground theme="cyber" accentColor="#ff6b00" />
       <CyberHUD sectionLabel="ACT_01 // THE_HOOK" accentColor="#ff6b00" />
 
-      {/* PHASE A (0 - 89 frames): WHO IS ARYAN TANTY? */}
-      {frame < 90 && (
+      {/* PHASE A (0 - 77 frames): WHO IS ARYAN TANTY? */}
+      {frame < DROP_FRAME && (
         <AbsoluteFill
           style={{
             display: "flex",
@@ -63,7 +68,7 @@ export const Scene1Hook: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          {/* Quick teaser photo flashing in background */}
+          {/* Quick teaser photo flashing in background with rapid cut */}
           <div
             style={{
               position: "absolute",
@@ -71,14 +76,18 @@ export const Scene1Hook: React.FC = () => {
               height: 520,
               borderRadius: 24,
               overflow: "hidden",
-              opacity: interpolate(frame, [20, 45, 75, 88], [0.15, 0.35, 0.2, 0.45]),
+              opacity: interpolate(frame, [20, 40, 60, 75], [0.15, 0.5, 0.25, 0.6]),
               filter: "grayscale(100%) contrast(160%) brightness(85%)",
-              border: "1px solid rgba(255,107,0,0.3)",
-              transform: `scale(${1 + frame * 0.002})`,
+              border: "1px solid rgba(255,107,0,0.4)",
+              transform: `scale(${1 + frame * 0.003})`,
             }}
           >
             <Img
-              src={staticFile("images/aryan-hero.jpg")}
+              src={
+                frame >= 40 && frame < 60
+                  ? staticFile("images/aryan-portrait-standing.webp")
+                  : staticFile("images/aryan-hero.webp")
+              }
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
@@ -108,14 +117,14 @@ export const Scene1Hook: React.FC = () => {
             <h1
               style={{
                 fontFamily: "system-ui, -apple-system, sans-serif",
-                fontSize: 92,
+                fontSize: 94,
                 fontWeight: 900,
                 letterSpacing: "-0.03em",
                 lineHeight: 1.05,
                 color: "#ffffff",
                 margin: 0,
                 textTransform: "uppercase",
-                textShadow: "0 0 40px rgba(255,107,0,0.4)",
+                textShadow: "0 0 50px rgba(255,107,0,0.5)",
               }}
             >
               WHO IS <br />
@@ -136,17 +145,17 @@ export const Scene1Hook: React.FC = () => {
                 fontFamily: "'Courier New', Courier, monospace",
                 fontSize: 16,
                 letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.6)",
+                color: "rgba(255,255,255,0.7)",
               }}
             >
-              INITIALIZING TRANSMISSION IN 3... 2... 1...
+              TRANSMISSION LOCKED // 60 FPS
             </div>
           </div>
         </AbsoluteFill>
       )}
 
-      {/* PHASE B (90 - 180 frames): THE IMPACT DROP */}
-      {frame >= 90 && (
+      {/* PHASE B (78 - 180 frames): THE IMPACT DROP & PATTERN INTERRUPT */}
+      {frame >= DROP_FRAME && (
         <AbsoluteFill
           style={{
             display: "flex",
@@ -156,7 +165,7 @@ export const Scene1Hook: React.FC = () => {
             padding: "0 100px",
           }}
         >
-          {/* Authentic Portrait in Cyber Hex-Card */}
+          {/* Authentic Portrait in Cyber Hex-Card with Punch Tilt */}
           <div
             style={{
               position: "absolute",
@@ -165,13 +174,13 @@ export const Scene1Hook: React.FC = () => {
               height: 480,
               borderRadius: 20,
               overflow: "hidden",
-              border: "2px solid rgba(255,107,0,0.6)",
-              boxShadow: "0 0 50px rgba(255,107,0,0.35)",
-              transform: `scale(${postSpring}) rotate(2deg)`,
+              border: "2px solid rgba(255,107,0,0.7)",
+              boxShadow: "0 0 60px rgba(255,107,0,0.45)",
+              transform: `scale(${postSpring}) rotate(${Math.sin((frame - DROP_FRAME) * 0.05) * 3}deg)`,
             }}
           >
             <Img
-              src={staticFile("images/aryan-hero.jpg")}
+              src={staticFile("images/aryan-hero.webp")}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
             <div
@@ -180,11 +189,11 @@ export const Scene1Hook: React.FC = () => {
                 bottom: 16,
                 left: 16,
                 right: 16,
-                backgroundColor: "rgba(5, 6, 8, 0.85)",
+                backgroundColor: "rgba(5, 6, 8, 0.88)",
                 backdropFilter: "blur(8px)",
                 padding: "8px 14px",
                 borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.15)",
                 fontFamily: "'Courier New', monospace",
                 fontSize: 12,
                 color: "#ff6b00",
@@ -211,8 +220,8 @@ export const Scene1Hook: React.FC = () => {
                 display: "inline-block",
                 padding: "6px 14px",
                 borderRadius: 999,
-                backgroundColor: "rgba(255, 107, 0, 0.15)",
-                border: "1px solid rgba(255, 107, 0, 0.4)",
+                backgroundColor: "rgba(255, 107, 0, 0.2)",
+                border: "1px solid rgba(255, 107, 0, 0.5)",
                 fontFamily: "'Courier New', monospace",
                 fontSize: 14,
                 letterSpacing: "0.2em",
@@ -251,7 +260,7 @@ export const Scene1Hook: React.FC = () => {
               style={{
                 fontFamily: "system-ui, -apple-system, sans-serif",
                 fontSize: 26,
-                color: "rgba(255,255,255,0.8)",
+                color: "rgba(255,255,255,0.85)",
                 lineHeight: 1.4,
                 margin: "0 0 30px 0",
               }}
@@ -283,7 +292,7 @@ export const Scene1Hook: React.FC = () => {
       {flashOpacity > 0 && (
         <AbsoluteFill
           style={{
-            backgroundColor: "#ff6b00",
+            backgroundColor: "#ffffff",
             opacity: flashOpacity,
             pointerEvents: "none",
           }}
